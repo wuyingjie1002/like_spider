@@ -1,2 +1,9 @@
-# like_spider
-A crawler framework that allows developers to easily extract web page information and quickly store data.
+like spider: a crawler framework that allows developers to easily extract web page information and quickly store data.
+
+author: wyjhaha@foxmail.com
+
+github: https://github.com/wuyingjie1002/like_spider
+
+Development documentation can be found in the doc directory.
+
+If you have any questions or suggestions, please contact me by email.
