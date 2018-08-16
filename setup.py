@@ -13,5 +13,11 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url = 'https://github.com/wuyingjie1002/like_spider',
     packages = setuptools.find_packages(),
-    classifiers = ()
+    classifiers = (),
+    install_requires = [
+        'requests',
+        'random',
+        'pymysql',
+        'openpyxl'
+    ]
 )
