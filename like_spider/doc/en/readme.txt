@@ -2,7 +2,8 @@ like spider framework instructions
 
 ###############################################################################################
 1.Configuration file description
-config.py
+config.py: This file gets the file of the current project configuration when the framework is executed, no need to understand and change
+config_example.py: This file is your current project configuration file. You need to copy this file to your development directory and change it to the configuration required by the current project. The file name is best to use config_ plus the project name, for example: config_spider1.py
 
 Mysql database configuration
 DB_HOST: database host name
@@ -19,6 +20,8 @@ PROXIES: Proxy ip, this parameter is a list type, you can configure multiple, ra
 LOG_DIR: Program execution log, if enabled, to ensure write access to this directory
 
 EXCEL_DIR: excel file storage directory, if enabled, to ensure that this directory has write permission
+
+Note: In the actual development process, when you need to import like_spider, you need to import config_spider1 first, the name here is the name of the configuration file you copied and modified, pay attention to your directory hierarchy when importing.
 
 
 ###############################################################################################
@@ -71,7 +74,7 @@ haveFoot: whether there is an end tag, the default is True, if you want to extra
 
 (3).getData: get the extracted html tag content and the required tag attributes
 
-Returns: the tag content and the tag attributes that need to be obtained, the list type, for example: [{'attr':{'a1':'v1', 'a2':'v2'}, 'content':'t1'}], Each element in the list is a dictionary. The attr element in the dictionary corresponds to the tag attribute you want to get, and the content element corresponds to the tag content.
+Returns: the tag content and the tag attributes that need to be obtained, the list type, for example: [{'attr':{'a1':'v1', 'a2':'v2'}, 'content':'t1'}], Each element in the list is a dictionary. The attr element in the dictionary corresponds to the tag attribute you want to get, and the content element corresponds to the tag content
 
 Example:
 
@@ -195,7 +198,7 @@ data = [[1,2,3],[4,5,6]]
 excel.saveFile(data, 'test.xlsx')
 
 
-In actual development, when instantiating each object, you can
+Note: In actual development, when instantiating each object, you can
 
 from like_spider import *
 

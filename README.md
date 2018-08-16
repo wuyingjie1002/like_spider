@@ -4,6 +4,6 @@ author: wyjhaha@foxmail.com
 
 github: https://github.com/wuyingjie1002/like_spider
 
-Development documentation can be found in the doc directory.
+Note: please read the development documentation and sample code in detail during development, development documentation can be found in the doc directory.
 
 If you have any questions or suggestions, please contact me by email.
