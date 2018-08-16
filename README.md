@@ -6,4 +6,6 @@ github: https://github.com/wuyingjie1002/like_spider
 
 Note: please read the development documentation and sample code in detail during development, development documentation can be found in the doc directory.
 
+github wiki: https://github.com/wuyingjie1002/like_spider/wiki
+
 If you have any questions or suggestions, please contact me by email.
