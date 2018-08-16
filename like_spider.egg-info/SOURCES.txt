@@ -2,6 +2,7 @@ README.md
 setup.py
 like_spider/__init__.py
 like_spider/config.py
+like_spider/config_example.py
 like_spider/excel.py
 like_spider/html.py
 like_spider/mysql.py
@@ -9,4 +10,5 @@ like_spider/request.py
 like_spider.egg-info/PKG-INFO
 like_spider.egg-info/SOURCES.txt
 like_spider.egg-info/dependency_links.txt
+like_spider.egg-info/requires.txt
 like_spider.egg-info/top_level.txt
