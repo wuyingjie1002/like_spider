@@ -4,6 +4,8 @@ author: wyjhaha@foxmail.com
 
 github: https://github.com/wuyingjie1002/like_spider
 
+version: 1.0.4
+
 Note: please read the development documentation and sample code in detail during development, development documentation can be found in the doc directory.
 
 github wiki: https://github.com/wuyingjie1002/like_spider/wiki
