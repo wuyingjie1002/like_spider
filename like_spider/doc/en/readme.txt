@@ -13,13 +13,19 @@ DB_PORT: database port
 DB_NAME: database name
 DB_CHARSET: database character set
 
+TIME_OUT: request expiration time, unit: second
+
 Proxy settings
-HEADERS: Proxy User-Agent, this parameter is a list type, you can configure multiple, randomly select one when accessing
-PROXIES: Proxy ip, this parameter is a list type, you can configure multiple, randomly select one when accessing
+HEADERS: proxy User-Agent, this parameter is a list type, you can configure multiple, randomly select one when accessing.
+PROXIES: proxy ip, this parameter is a list type, you can configure multiple, randomly select one when accessing.
 
-LOG_DIR: Program execution log, if enabled, to ensure write access to this directory
+PHANTOMJS: absolute path of phantomjs, if you do not need to get the webpage after javascript is running, you can ignore this.
 
-EXCEL_DIR: excel file storage directory, if enabled, to ensure that this directory has write permission
+WAIT_TIME: webdriver waits for the page to finish loading, unit: second.
+
+LOG_DIR: program execution log, if enabled, to ensure write access to this directory.
+
+EXCEL_DIR: excel file storage directory, if enabled, to ensure that this directory has write permission.
 
 Note: In the actual development process, when you need to import like_spider, you need to import config_spider1 first, the name here is the name of the configuration file you copied and modified, pay attention to your directory hierarchy when importing.
 
@@ -48,6 +54,12 @@ res = req.get('http://xxx.xxx.xxx')
 Parameters and return content are the same as the get function
 
 res = req.post('http://xxx.xxx.xxx', data = {'test':'test'})
+
+(3).final: webdriver loads and runs the javascript inside the page and returns the final web content. 
+
+The parameter is only url, ibid.
+
+res = req.final('http://xxx.xxx.xxx')
 
 
 ###############################################################################################

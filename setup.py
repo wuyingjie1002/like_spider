@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name = 'like_spider',
-    version = '1.0.4',
+    version = '1.0.5',
     author = 'Yingjie Wu',
     author_email = 'wyjhaha@foxmail.com',
     description = 'a crawler framework that allows developers to easily extract web page information and quickly store data',
@@ -17,6 +17,7 @@ setuptools.setup(
     install_requires = [
         'requests',
         'pymysql',
-        'openpyxl'
+        'openpyxl',
+        'selenium<=3.8.0'
     ]
 )

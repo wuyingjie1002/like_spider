@@ -1,5 +1,6 @@
 import requests, random
 from .config import *
+from selenium import webdriver
 
 class Request():
     """This is a class that handles http requests."""
@@ -31,7 +32,7 @@ class Request():
 
     def get(self, url, data = {}):
         """http get request"""
-        req = requests.get(url, data = data, headers = self.getHeader(), proxies = self.getProxy())
+        req = requests.get(url, data = data, headers = self.getHeader(), proxies = self.getProxy(), timeout = TIME_OUT)
 
         if req.status_code == 200:
             return req.text
@@ -41,10 +42,20 @@ class Request():
 
     def post(self, url, data = {}):
         """http post request"""
-        req = requests.post(url, data = data, headers = self.getHeader(), proxies = self.getProxy())
+        req = requests.post(url, data = data, headers = self.getHeader(), proxies = self.getProxy(), timeout = TIME_OUT)
 
         if req.status_code == 200:
             return req.text
         else:
             print('request status code : ', req.status_code)
             return ''
+
+    def final(self, url):
+        """webdriver loads webpage"""
+        driver = webdriver.PhantomJS(executable_path = PHANTOMJS)
+        driver.get(url)
+        driver.implicitly_wait(WAIT_TIME)
+        content = driver.page_source
+        driver.quit()
+
+        return content

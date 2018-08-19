@@ -13,9 +13,15 @@ DB_PORT: 数据库端口
 DB_NAME: 数据库名称
 DB_CHARSET: 数据库字符集
 
+TIME_OUT: 请求过期时间, 单位: 秒
+
 代理设置
 HEADERS: 代理User-Agent, 此参数为列表类型, 可以配置多个, 访问时会随机抽取一个
 PROXIES: 代理ip, 此参数为列表类型, 可以配置多个, 访问时会随机抽取一个
+
+PHANTOMJS: phantomjs的绝对路径, 如果你不需要获取js运行后网页内容, 可以忽略此项
+
+WAIT_TIME: webdriver等待页面加载完成的时间, 单位: 秒
 
 LOG_DIR: 程序执行日志, 如果开启, 要保证此目录有写入权限
 
@@ -48,6 +54,11 @@ res = req.get('http://xxx.xxx.xxx')
 
 res = req.post('http://xxx.xxx.xxx', data = {'test':'test'})
 
+(3).final函数: webdriver加载并且运行网页内javascript后返回最终网页内容
+
+参数只有url, 同上
+
+res = req.final('http://xxx.xxx.xxx')
 
 ###############################################################################################
 3.html提取说明
