@@ -13,15 +13,19 @@ DB_PORT: 数据库端口
 DB_NAME: 数据库名称
 DB_CHARSET: 数据库字符集
 
+http请求配置
+
 TIME_OUT: 请求过期时间, 单位: 秒
 
-代理设置
 HEADERS: 代理User-Agent, 此参数为列表类型, 可以配置多个, 访问时会随机抽取一个
+
 PROXIES: 代理ip, 此参数为列表类型, 可以配置多个, 访问时会随机抽取一个
 
 PHANTOMJS: phantomjs的绝对路径, 如果你不需要获取js运行后网页内容, 可以忽略此项
 
 WAIT_TIME: webdriver等待页面加载完成的时间, 单位: 秒
+
+文件生成配置
 
 LOG_DIR: 程序执行日志, 如果开启, 要保证此目录有写入权限
 

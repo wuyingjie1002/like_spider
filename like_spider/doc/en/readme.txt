@@ -13,15 +13,19 @@ DB_PORT: database port
 DB_NAME: database name
 DB_CHARSET: database character set
 
+Http request configuration
+
 TIME_OUT: request expiration time, unit: second
 
-Proxy settings
 HEADERS: proxy User-Agent, this parameter is a list type, you can configure multiple, randomly select one when accessing.
+
 PROXIES: proxy ip, this parameter is a list type, you can configure multiple, randomly select one when accessing.
 
 PHANTOMJS: absolute path of phantomjs, if you do not need to get the webpage after javascript is running, you can ignore this.
 
 WAIT_TIME: webdriver waits for the page to finish loading, unit: second.
+
+File generation configuration
 
 LOG_DIR: program execution log, if enabled, to ensure write access to this directory.
 
