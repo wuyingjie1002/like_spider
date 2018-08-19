@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: like-spider
-Version: 1.0.8
+Version: 1.1.0
 Summary: a crawler framework that allows developers to easily extract web page information and quickly store data
 Home-page: https://github.com/wuyingjie1002/like_spider
 Author: Yingjie Wu
@@ -12,11 +12,10 @@ Description: like spider: a crawler framework that allows developers to easily e
         
         github: https://github.com/wuyingjie1002/like_spider
         
-        Note: please read the development documentation and sample code in detail during development, development documentation can be found in the doc directory.
+        Note: please read the development documentation and sample code in detail during development.
         
         github wiki: https://github.com/wuyingjie1002/like_spider/wiki
         
         If you have any questions or suggestions, please contact me by email.
-        
 Platform: UNKNOWN
 Description-Content-Type: text/markdown
