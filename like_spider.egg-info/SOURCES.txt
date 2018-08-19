@@ -12,3 +12,6 @@ like_spider.egg-info/SOURCES.txt
 like_spider.egg-info/dependency_links.txt
 like_spider.egg-info/requires.txt
 like_spider.egg-info/top_level.txt
+like_spider/doc/__init__.py
+like_spider/doc/en/__init__.py
+like_spider/doc/zh/__init__.py

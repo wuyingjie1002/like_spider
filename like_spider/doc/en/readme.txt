@@ -27,7 +27,7 @@ WAIT_TIME: webdriver waits for the page to finish loading, unit: second.
 
 File generation configuration
 
-LOG_DIR: program execution log, if enabled, to ensure write access to this directory.
+LOG_DIR: program execution log directory, if enabled, to ensure write access to this directory.
 
 EXCEL_DIR: excel file storage directory, if enabled, to ensure that this directory has write permission.
 
