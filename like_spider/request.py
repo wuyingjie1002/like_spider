@@ -9,7 +9,8 @@ class Request():
         """get proxy ip"""
         proxy = {}
         if 'PROXY_API' in globals() and PROXY_API != '':
-            req = requests.get(PROXY_API)
+            session = requests.Session()
+            req = session.get(PROXY_API)
             ipStr = req.text
             if ipStr != '':
                 ipList = ipStr.split('--')
@@ -30,9 +31,12 @@ class Request():
                 header = random.sample(HEADERS, 1)[0]
         return header
 
-    def get(self, url, data = {}):
+    def get(self, url, data = {}, referer = ''):
         """http get request"""
-        req = requests.get(url, data = data, headers = self.getHeader(), proxies = self.getProxy(), timeout = TIME_OUT)
+        session = requests.Session()
+        header = self.getHeader()
+        header['Referer'] = referer
+        req = session.get(url, data = data, headers = header, proxies = self.getProxy(), timeout = TIME_OUT)
 
         if req.status_code == 200:
             return req.text
@@ -40,9 +44,12 @@ class Request():
             print('request status code : ', req.status_code)
             return ''
 
-    def post(self, url, data = {}):
+    def post(self, url, data = {}, referer = ''):
         """http post request"""
-        req = requests.post(url, data = data, headers = self.getHeader(), proxies = self.getProxy(), timeout = TIME_OUT)
+        session = requests.Session()
+        header = self.getHeader()
+        header['Referer'] = referer
+        req = session.post(url, data = data, headers = header, proxies = self.getProxy(), timeout = TIME_OUT)
 
         if req.status_code == 200:
             return req.text
