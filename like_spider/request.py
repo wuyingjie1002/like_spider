@@ -5,12 +5,15 @@ from selenium import webdriver
 class Request():
     """This is a class that handles http requests."""
 
+    def __init__(self):
+        """initialize"""
+        self.session = requests.Session()
+
     def getProxy(self):
         """get proxy ip"""
         proxy = {}
         if 'PROXY_API' in globals() and PROXY_API != '':
-            session = requests.Session()
-            req = session.get(PROXY_API)
+            req = self.session.get(PROXY_API)
             ipStr = req.text
             if ipStr != '':
                 ipList = ipStr.split('--')
@@ -33,10 +36,9 @@ class Request():
 
     def get(self, url, data = {}, referer = ''):
         """http get request"""
-        session = requests.Session()
         header = self.getHeader()
         header['Referer'] = referer
-        req = session.get(url, data = data, headers = header, proxies = self.getProxy(), timeout = TIME_OUT)
+        req = self.session.get(url, data = data, headers = header, proxies = self.getProxy(), timeout = TIME_OUT)
 
         if req.status_code == 200:
             return req.text
@@ -46,10 +48,9 @@ class Request():
 
     def post(self, url, data = {}, referer = ''):
         """http post request"""
-        session = requests.Session()
         header = self.getHeader()
         header['Referer'] = referer
-        req = session.post(url, data = data, headers = header, proxies = self.getProxy(), timeout = TIME_OUT)
+        req = self.session.post(url, data = data, headers = header, proxies = self.getProxy(), timeout = TIME_OUT)
 
         if req.status_code == 200:
             return req.text
