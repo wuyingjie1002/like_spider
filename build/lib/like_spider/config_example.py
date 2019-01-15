@@ -40,7 +40,7 @@ sys.modules['PROXIES'] = [{}]
 absolute path of phantomjs:
 If you do not need to get the webpage after javascript is running, you can ignore this.
 """
-sys.modules['PHANTOMJS'] = '/usr/local/phantomjs/bin/phantomjs'
+sys.modules['FIREFOX_DRIVER'] = '/usr/local/bin/geckodriver'
 
 """webdriver waits for the page to finish loading, unit: second"""
 sys.modules['WAIT_TIME'] = 10

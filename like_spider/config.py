@@ -18,7 +18,7 @@ HEADERS = sys.modules['HEADERS']
 
 PROXIES = sys.modules['PROXIES']
 
-PHANTOMJS = sys.modules['PHANTOMJS']
+FIREFOX_DRIVER = sys.modules['FIREFOX_DRIVER']
 
 WAIT_TIME = sys.modules['WAIT_TIME']
 

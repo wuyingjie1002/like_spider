@@ -5,11 +5,15 @@ from selenium import webdriver
 class Request():
     """This is a class that handles http requests."""
 
+    def __init__(self):
+        """initialize"""
+        self.session = requests.Session()
+
     def getProxy(self):
         """get proxy ip"""
         proxy = {}
         if 'PROXY_API' in globals() and PROXY_API != '':
-            req = requests.get(PROXY_API)
+            req = self.session.get(PROXY_API)
             ipStr = req.text
             if ipStr != '':
                 ipList = ipStr.split('--')
@@ -30,9 +34,11 @@ class Request():
                 header = random.sample(HEADERS, 1)[0]
         return header
 
-    def get(self, url, data = {}):
+    def get(self, url, data = {}, referer = ''):
         """http get request"""
-        req = requests.get(url, data = data, headers = self.getHeader(), proxies = self.getProxy(), timeout = TIME_OUT)
+        header = self.getHeader()
+        header['Referer'] = referer
+        req = self.session.get(url, data = data, headers = header, proxies = self.getProxy(), timeout = TIME_OUT)
 
         if req.status_code == 200:
             return req.text
@@ -40,9 +46,11 @@ class Request():
             print('request status code : ', req.status_code)
             return ''
 
-    def post(self, url, data = {}):
+    def post(self, url, data = {}, referer = ''):
         """http post request"""
-        req = requests.post(url, data = data, headers = self.getHeader(), proxies = self.getProxy(), timeout = TIME_OUT)
+        header = self.getHeader()
+        header['Referer'] = referer
+        req = self.session.post(url, data = data, headers = header, proxies = self.getProxy(), timeout = TIME_OUT)
 
         if req.status_code == 200:
             return req.text
@@ -52,10 +60,25 @@ class Request():
 
     def final(self, url):
         """webdriver loads webpage"""
-        driver = webdriver.PhantomJS(executable_path = PHANTOMJS)
-        driver.get(url)
-        driver.implicitly_wait(WAIT_TIME)
-        content = driver.page_source
-        driver.quit()
+        options = webdriver.FirefoxOptions()
+        options.set_headless()
+
+        proxy = self.getProxy()
+        if len(proxy) > 0:
+            proxyStr = list(proxy.values())[0]
+            proxyList = proxyStr.split(':')
+            options.set_preference('network.proxy.type', 1)
+            options.set_preference('network.proxy.http', proxyList[0])
+            options.set_preference('network.proxy.http_port', int(proxyList[1]))
+
+        header = self.getHeader()
+        if len(header) > 0:
+            options.set_preference("general.useragent.override", list(header.values())[0])
+
+        browser = webdriver.Firefox(executable_path = FIREFOX_DRIVER, options = options)
+        browser.get(url)
+        browser.implicitly_wait(WAIT_TIME)
+        content = browser.page_source
+        browser.quit()
 
         return content

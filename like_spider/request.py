@@ -60,10 +60,25 @@ class Request():
 
     def final(self, url):
         """webdriver loads webpage"""
-        driver = webdriver.PhantomJS(executable_path = PHANTOMJS)
-        driver.get(url)
-        driver.implicitly_wait(WAIT_TIME)
-        content = driver.page_source
-        driver.quit()
+        options = webdriver.FirefoxOptions()
+        options.set_headless()
+
+        proxy = self.getProxy()
+        if len(proxy) > 0:
+            proxyStr = list(proxy.values())[0]
+            proxyList = proxyStr.split(':')
+            options.set_preference('network.proxy.type', 1)
+            options.set_preference('network.proxy.http', proxyList[0])
+            options.set_preference('network.proxy.http_port', int(proxyList[1]))
+
+        header = self.getHeader()
+        if len(header) > 0:
+            options.set_preference("general.useragent.override", list(header.values())[0])
+
+        browser = webdriver.Firefox(executable_path = FIREFOX_DRIVER, options = options)
+        browser.get(url)
+        browser.implicitly_wait(WAIT_TIME)
+        content = browser.page_source
+        browser.quit()
 
         return content
