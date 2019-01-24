@@ -53,9 +53,3 @@ project execution log directory:
 If enabled, to ensure write access to this directory.
 """
 sys.modules['LOG_DIR'] = ''
-
-"""
-excel file storage directory:
-If enabled, to ensure that this directory has write permission.
-"""
-sys.modules['EXCEL_DIR'] = ''

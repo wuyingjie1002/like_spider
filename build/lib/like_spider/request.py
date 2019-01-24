@@ -83,14 +83,15 @@ class Request():
 
         return content
 
-    def getImg(self, url, referer = ''):
+    def downloadImg(self, url, fileName, referer = ''):
         """download image"""
         header = self.getHeader()
         header['Referer'] = referer
         req = self.session.get(url, headers = header, proxies = self.getProxy(), timeout = TIME_OUT)
 
         if req.status_code == 200:
-            return req.content
+            imgFile = open(fileName, 'wb+')
+            imgFile.write(req.content)
+            imgFile.close()
         else:
             print('request status code : ', req.status_code)
-            return ''

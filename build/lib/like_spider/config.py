@@ -23,5 +23,3 @@ FIREFOX_DRIVER = sys.modules['FIREFOX_DRIVER']
 WAIT_TIME = sys.modules['WAIT_TIME']
 
 LOG_DIR = sys.modules['LOG_DIR']
-
-EXCEL_DIR = sys.modules['EXCEL_DIR']
