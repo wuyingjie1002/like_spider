@@ -43,7 +43,7 @@ If you do not need to get the webpage after javascript is running, you can ignor
 sys.modules['FIREFOX_DRIVER'] = '/usr/local/bin/geckodriver'
 
 """webdriver waits for the page to finish loading, unit: second"""
-sys.modules['WAIT_TIME'] = 10
+sys.modules['WAIT_TIME'] = 20
 
 
 """File generation configuration"""

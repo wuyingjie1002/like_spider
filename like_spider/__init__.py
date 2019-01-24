@@ -37,6 +37,7 @@ from .request import Request
 from .html import Html
 from .mysql import Mysql
 from .excel import Excel
+from .fireFox import FireFox
 
 def filterTag(tagName, sourceStr):
     """filter html tag content in a string"""
@@ -72,4 +73,4 @@ def executeLog(content):
     else:
         print('file directory error')
 
-__all__ = ['Request', 'Html', 'Mysql', 'Excel', 'filterTag', 'filterBlankChar', 'escapeString', 'executeLog']
+__all__ = ['Request', 'Html', 'Mysql', 'Excel', 'FireFox', 'filterTag', 'filterBlankChar', 'escapeString', 'executeLog']
