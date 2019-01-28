@@ -10,10 +10,6 @@ class FireFox():
 
     def __init__(self):
         """initialize"""
-        pass
-
-    def load(self, url):
-        """browser loading page"""
         options = webdriver.FirefoxOptions()
         options.set_headless()
 
@@ -33,6 +29,8 @@ class FireFox():
 
         self.browser = webdriver.Firefox(executable_path = FIREFOX_DRIVER, options = options)
 
+    def load(self, url):
+        """browser loading page"""
         self.browser.get(url)
         self.browser.implicitly_wait(WAIT_TIME)
         
