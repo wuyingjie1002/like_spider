@@ -31,17 +31,13 @@ github wiki: https://github.com/wuyingjie1002/like_spider/wiki
 If you have any questions or suggestions, please contact me by email.
 """
 
-import time, re, os, pymysql
+import time, re, os, pymysql, zipfile
 from .config import *
 from .request import Request
 from .html import Html
 from .mysql import Mysql
 from .excel import Excel
 from .fireFox import FireFox
-
-def filterTag(tagName, sourceStr):
-    """filter html tag content in a string"""
-    return re.sub(r'<\s*'+tagName+'.*?>.*?<\s*\/' + tagName + '\s*>', '', sourceStr)
 
 def filterBlankChar(sourceStr):
     """filter whitespace characters in a string"""
@@ -73,4 +69,11 @@ def executeLog(content):
     else:
         print('file directory error')
 
-__all__ = ['Request', 'Html', 'Mysql', 'Excel', 'FireFox', 'filterTag', 'filterBlankChar', 'escapeString', 'executeLog']
+def zipCompress(fileList, outputPath):
+    """compress the folder into a zip"""
+    f = zipfile.ZipFile(outputPath, 'w', zipfile.ZIP_DEFLATED)
+    for fl in fileList:
+        f.write(fl)
+    f.close()
+
+__all__ = ['Request', 'Html', 'Mysql', 'Excel', 'FireFox', 'filterBlankChar', 'escapeString', 'executeLog', 'zipCompress']

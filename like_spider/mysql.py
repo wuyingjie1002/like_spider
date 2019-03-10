@@ -1,4 +1,4 @@
-import pymysql
+import pymysql, time, os, sys
 from .config import *
 
 class Mysql():
@@ -32,6 +32,7 @@ class Mysql():
             return True
         except:
             print('ERROR SQL : ', sql, data)
+            self.errorLog(sql, data)
             if operation == 1:
                 return 0
             return False
@@ -77,5 +78,27 @@ class Mysql():
                         result.append(item[0])
         except:
             print('ERROR SQL : ', sql, data)
+            self.errorLog(sql, data)
 		
         return result
+
+    def errorLog(self, sql, data):
+        """sql error log"""
+        localTime = time.localtime()
+        month = time.strftime('%Y%m', localTime)
+        day = time.strftime('%Y%m%d', localTime)
+        strTime = time.strftime('%Y-%m-%d %H:%M:%S', localTime)
+        if 'LOG_DIR' in globals() and LOG_DIR != "":
+            if LOG_DIR[-1] == "/":
+                path = LOG_DIR + "sqlErrorLog/" + month
+            else:
+                path = LOG_DIR + "/sqlErrorLog/" + month
+            if os.path.exists(path) == False:
+                os.makedirs(path)
+            fileName = path + "/" + day + ".log"
+            f = open(fileName, 'a+')
+            content = strTime + " | " + sql + " | " + ','.join(data) + "\n"
+            f.write(content)
+            f.close()
+        else:
+            print('file directory error')

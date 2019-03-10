@@ -25,7 +25,7 @@ class Html():
             if len(setAttr) > 0:
                 setAttrList = []
                 for attrIndex in setAttr:
-                    setAttrList.append('\s' + attrIndex + '\s*=\s*[\'\"]' + setAttr[attrIndex] + '[\'\"]')
+                    setAttrList.append(attrIndex + '\s*=\s*[\'\"]' + setAttr[attrIndex] + '[\'\"]')
                 self.setAttr = '[^>]*'.join(setAttrList)
             self.haveFoot = haveFoot
             self.tagHeadPattern = re.compile(r'<\s*'+tagName+'[^>]*>', re.S)
@@ -55,7 +55,7 @@ class Html():
                     currTag = {'attr':{}, 'content':''}
                     if len(self.getAttr) > 0:
                         for ga in self.getAttr:
-                            attrMatch = re.search(r'<\s*'+self.tagName+'[^>]*\s'+ga+'\s*=\s*[\'\"](.*?)[\'\"]', match, re.S)
+                            attrMatch = re.search(r'<\s*'+self.tagName+'[^>]*'+ga+'\s*=\s*[\'\"](.*?)[\'\"]', match, re.S)
                             if attrMatch != None:
                                 currTag['attr'][ga] = attrMatch.group(1)
                     currTag['content'] = match
@@ -92,7 +92,7 @@ class Html():
                             currTag = {'attr':{}, 'content':''}
                             if len(self.getAttr) > 0:
                                 for ga in self.getAttr:
-                                    attrMatch = re.search(r'<\s*'+self.tagName+'[^>]*\s'+ga+'\s*=\s*[\'\"](.*?)[\'\"]', currHtml, re.S)
+                                    attrMatch = re.search(r'<\s*'+self.tagName+'[^>]*'+ga+'\s*=\s*[\'\"](.*?)[\'\"]', currHtml, re.S)
                                     if attrMatch != None:
                                         currTag['attr'][ga] = attrMatch.group(1)
                             content = currHtml[firstHeadLen:(len(currHtml) - footLen)]
