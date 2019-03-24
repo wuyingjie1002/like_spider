@@ -36,6 +36,13 @@ class FireFox():
         
         self.content = self.browser.page_source
 
+    def refresh(self):
+        """browser refresh page"""
+        self.browser.refresh()
+        self.browser.implicitly_wait(WAIT_TIME)
+        
+        self.content = self.browser.page_source
+
     def click(self, elementXpath, waitElementXpath = '', sleepTime = 0):
         """mouse click"""
         element = self.browser.find_element_by_xpath(elementXpath)
