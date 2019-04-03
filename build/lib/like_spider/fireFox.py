@@ -29,17 +29,23 @@ class FireFox():
 
         self.browser = webdriver.Firefox(executable_path = FIREFOX_DRIVER, options = options)
 
-    def load(self, url):
+    def load(self, url, sleepTime = 0):
         """browser loading page"""
         self.browser.get(url)
-        self.browser.implicitly_wait(WAIT_TIME)
+        if sleepTime > 0:
+            time.sleep(sleepTime)
+        else:
+            self.browser.implicitly_wait(WAIT_TIME)
         
         self.content = self.browser.page_source
 
-    def refresh(self):
+    def refresh(self, sleepTime = 0):
         """browser refresh page"""
         self.browser.refresh()
-        self.browser.implicitly_wait(WAIT_TIME)
+        if sleepTime > 0:
+            time.sleep(sleepTime)
+        else:
+            self.browser.implicitly_wait(WAIT_TIME)
         
         self.content = self.browser.page_source
 
