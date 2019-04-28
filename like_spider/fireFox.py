@@ -8,10 +8,12 @@ from .request import Request
 class FireFox():
     """This is a class that simulates the behavior of Firefox browsers."""
 
-    def __init__(self):
+    def __init__(self, show = False):
         """initialize"""
         options = webdriver.FirefoxOptions()
-        options.set_headless()
+
+        if show == False:
+            options.set_headless()
 
         req = Request()
 

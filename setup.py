@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name = 'like_spider',
-    version = '1.1.9',
+    version = '1.2.0',
     author = 'Yingjie Wu',
     author_email = 'wyjhaha@foxmail.com',
     description = 'a crawler framework that allows developers to easily extract web page information and quickly store data',
