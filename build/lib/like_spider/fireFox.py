@@ -2,6 +2,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.keys import Keys
 from .config import *
 from .request import Request
 
@@ -61,6 +62,24 @@ class FireFox():
             WebDriverWait(self.browser, WAIT_TIME).until(lambda driver : driver.find_element_by_xpath(waitElementXpath))
         self.content = self.browser.page_source
 
+    def moveElementTo(self, elementXpath, xpos, ypos, waitElementXpath = '', sleepTime = 0):
+        """drag the element to a position"""
+        element = self.browser.find_element_by_xpath(elementXpath)
+        ActionChains(self.browser).drag_and_drop_by_offset(element, xpos, ypos).perform()
+        if sleepTime > 0:
+            time.sleep(sleepTime)
+        elif waitElementXpath != '':
+            WebDriverWait(self.browser, WAIT_TIME).until(lambda driver : driver.find_element_by_xpath(waitElementXpath))
+        self.content = self.browser.page_source
+
+    def isElement(self, elementXpath):
+        """Whether the element exists"""
+        try:
+            self.browser.find_element_by_xpath(elementXpath)
+            return True
+        except:
+            return False
+
     def moveTo(self, elementXpath, waitElementXpath = '', sleepTime = 0):
         """mouse move to element"""
         element = self.browser.find_element_by_xpath(elementXpath)
@@ -100,6 +119,10 @@ class FireFox():
         element = self.browser.find_element_by_xpath(elementXpath)
         self.browser.execute_script("arguments[0].innerHTML = arguments[1];", element, value)
         self.content = self.browser.page_source
+
+    def sendKey(self, elementXpath, key):
+        """keyboard input"""
+        self.browser.find_element_by_xpath(elementXpath).send_keys(key)
 
     def switchToFrame(self, elementXpath, sleepTime = 0):
         """switch to a frame"""
